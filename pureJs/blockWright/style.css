@@ -1,0 +1,30 @@
+#boardContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .board {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .square {
+    flex-basis: 15%;
+    padding-bottom: 15%; /* Setting the padding-bottom equal to the width creates square-shaped cells */
+    margin: 1px;
+  }
+  .xHead{
+      background-color: aqua;
+      border: solid blue;
+  }
+  .yHead{
+      background-color: pink;
+      border: solid red;
+  }
+  .corner{
+      background-color: yellow;
+      border: solid yellowgreen;
+  }
+  .boardSquare{
+    border: 3px solid gray; /* Just for visualization */
+  }
