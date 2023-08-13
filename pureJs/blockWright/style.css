@@ -1,16 +1,21 @@
 #boardContainer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .board {
+    max-width: 280px;
     display: flex;
     flex-wrap: wrap;
   }
 
   .square {
-    flex-basis: 15%;
-    padding-bottom: 15%; /* Setting the padding-bottom equal to the width creates square-shaped cells */
+    flex-basis: 40px;
+    text-align: center;
+    padding-top: 10px;
+    height: 30px;
+    width: 15px;
     margin: 1px;
   }
   .xHead{
