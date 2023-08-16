@@ -27,9 +27,12 @@
       border: solid red;
   }
   .corner{
-      background-color: yellow;
+      background-color: purple;
       border: solid yellowgreen;
   }
   .boardSquare{
     border: 3px solid gray; /* Just for visualization */
+  }
+  .highlighted{
+    background-color: yellow;
   }
