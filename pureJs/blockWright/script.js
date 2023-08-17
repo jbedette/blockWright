@@ -105,7 +105,7 @@ class Board {
     // Append the board to the container
     const container = document.getElementById(this.containerId);
     container.appendChild(this.board);
-    console.log(this.xHeads);
+    //console.log(this.xHeads);
 
     const xHeadElems = [...document.getElementsByClassName("xHead")];
     // console.log(xHeadElems);
@@ -290,7 +290,7 @@ const clear = () => {
 
 const submitBtn = document.getElementById("submitBtn");
 submitBtn.addEventListener("click", () => {
-  if (gridCheck()) {
+  if (gridCheck() && wordCheck()) {
     board.count++;
     let block = { id: board.count, word: "", sqrs: [], color: "" };
     block.color = random_bg_color();
