@@ -1,23 +1,7 @@
 import { randomLetter, words } from "./lettersWords.js";
 
-//notes
-// to get word at appropriate place, put textbox at absolute location, put it under a z level so you cant click it
-//TODO
-//[x]1. get random letter on headers, attatch buttons to headers, display selected letters
-//1.5 check words agaisnt grid
-//2. system for selecting squares on board, maybe ecs style with an array of ids
-//3. assign point values and use them
-//[x]3.5 word dict
-//4. more front end styling
-//5. win conditions
-//6. extend board
-//7. rerolls and such
-//8. board extension rules
-//9. menus
-//10. file structure
+//John Bedette, August 2023
 
-//todo
-// 1.
 const disp = document.getElementById("disp");
 
 //what this board constructor does, in order
@@ -128,7 +112,7 @@ class Board {
     });
   }
 }
-
+//takes an id string, returns an array where id strings for x and y are [0] and [1]
 const parseId = (str) => {
   const [x, y] = str.split(":").map(Number);
   return [x, y];
@@ -140,7 +124,7 @@ const parseId = (str) => {
 //pushes an id and letter tuple to an array called word stored in board
 //calls check() which checks if
 //  the word is valid
-//  todo: the word is allowed on grid
+//  the word is allowed on grid
 const headerClick = (idStr) => {
   const idNums = parseId(idStr);
   let target = null;
@@ -174,7 +158,12 @@ const headerClick = (idStr) => {
   dispStyler();
   blockHighlight();
 };
-
+//takes word array
+//for each letter moves relevant x or y item to buildBlock array
+//then concatenates those x's and y's into strings to compare against
+//existing square elements, when it finds a correct element
+//it highlights it in yellow
+//todo: change yellow highlight to yellow shade-over
 const blockHighlight = () => {
   const boardSqrs = [...document.getElementsByClassName("square")];
   board.word.forEach((e) => {
@@ -205,10 +194,13 @@ const makeWord = () => {
   return out;
 };
 //if word legal word and is legal on grid
+//meant to contain gridCheck also,
+//but gridCheck isn't needed everywhere wordcheck is,
+//not great
 const check = () => {
   return wordCheck();
 };
-//test
+
 //if check is true turn disp green
 const dispStyler = () => {
   if (check()) disp.style.backgroundColor = "green";
@@ -288,6 +280,9 @@ const clear = () => {
   });
 };
 
+//checks if word is legal,
+//clears displays and in-progress word arrays,
+// places word block on board and stores block in board
 const submitBtn = document.getElementById("submitBtn");
 submitBtn.addEventListener("click", () => {
   if (gridCheck() && wordCheck()) {
@@ -322,7 +317,7 @@ submitBtn.addEventListener("click", () => {
   }
 });
 
-//test
+//Square color change, border change to be used in future
 const squareChanger = (sqrId, bgColor, borderT, borderB, borderL, borderR) => {
   const sqr = document.getElementById(sqrId);
   sqr.style.backgroundColor = bgColor;
